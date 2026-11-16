@@ -14,7 +14,7 @@ apiVersion:
 kind: service
 metadata:
   name: frontend           # this name is the address. nginx.conf looks for it
-  namespace:
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     app: frontend         # must match the label in stats-deployment.yml

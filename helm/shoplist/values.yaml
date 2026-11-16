@@ -1,0 +1,26 @@
+imagePullPolicy: Never
+
+backend:
+  replicas: 1
+  image:
+    repository: backend
+    tag: local
+
+stats:
+  replicas: 1
+  image:
+    repository: stats
+    tag: local
+
+frontend:
+  replicas: 1
+  nodePort: 80
+  image:
+    repository: frontend
+    tag: local
+
+postgres:
+  database: POSTGRES_DB
+  user: POSTGRES_USER
+  password: POSTGRES_PASSWORD
+  storage: 1Gi

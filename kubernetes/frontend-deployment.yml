@@ -17,9 +17,9 @@ apiVersion: apps/v1
 kind: deployment
 metadata:
   name: frontend
-  namespace: shoplist
+  namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.<סרוויס>.replicas }}
   selector:
     matchLabels:
       app: frontend
@@ -31,7 +31,7 @@ spec:
       containers:
         - name: frontend
           image: shoplist-frontend:local
-          imagePullPolicy: Never
+          imagePullPolicy: {{ .Values.<סרוויס>.replicas }}
           ports:
             - containerPort: 80
           

@@ -4,9 +4,9 @@ apiVersion: apps/v1
 kind: deployment
 metadata:
   name: stats
-  namespace: shoplist
+  namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.<סרוויס>.replicas }}
   selector:
     matchLabels:
       app: stats
@@ -18,7 +18,7 @@ spec:
       containers:
         - name: stats
           image: shoplist-stats:local
-          imagePullPolicy: Never
+          imagePullPolicy: {{ .Values.<סרוויס>.replicas }}
           env:
             - name: BACKEND_URL
               value: http://backend:5000        # backend Service name, with http:// and port

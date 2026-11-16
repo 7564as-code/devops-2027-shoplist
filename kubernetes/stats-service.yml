@@ -2,8 +2,8 @@
 apiVersion:
 kind: service
 metadata:
-  name:            # this name is the address. nginx.conf looks for it
-  namespace:
+  name: stats            # this name is the address. nginx.conf looks for it
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
     app: stats         # must match the label in stats-deployment.yml
